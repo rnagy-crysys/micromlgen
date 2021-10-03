@@ -1,6 +1,7 @@
 import os
 import re
 from math import sin, cos
+from collections.abc import Iterable
 from inspect import getmro
 from jinja2 import FileSystemLoader, Environment
 
@@ -86,3 +87,17 @@ def port_trainset(X, y, classname='TrainSet'):
 
 def port_testset(X, y, classname='TestSet'):
     return jinja('testset.jinja', locals())
+
+
+def port_array(arr, precision=9):
+    """
+    Convert array to C
+    :param arr: list|ndarray
+    :param precision: int how many decimal digits to print
+    :return: str C-array contents
+    """
+    if not isinstance(arr, Iterable):
+        fmt = '%%.%df' % precision
+        return fmt % arr
+
+    return '{%s}' % (', '.join([port_array(x, precision) for x in arr]))
