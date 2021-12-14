@@ -2,14 +2,17 @@ from micromlgen import platforms
 from micromlgen.svm import is_svm, port_svm
 from micromlgen.rvm import is_rvm, port_rvm
 from micromlgen.sefr import is_sefr, port_sefr
-from micromlgen.decisiontree import is_decisiontree, port_decisiontree
-from micromlgen.randomforest import is_randomforest, port_randomforest
+from micromlgen.decisiontreeclassifier import is_decisiontree, port_decisiontree
+from micromlgen.decisiontreeregressor import is_decisiontree_regressor, port_decisiontree_regressor
+from micromlgen.randomforestclassifier import is_randomforest, port_randomforest
+from micromlgen.randomforestregressor import is_randomforest_regressor, port_randomforest_regressor
 from micromlgen.logisticregression import is_logisticregression, port_logisticregression
 from micromlgen.gaussiannb import is_gaussiannb, port_gaussiannb
 from micromlgen.pca import is_pca, port_pca
 from micromlgen.principalfft import is_principalfft, port_principalfft
 from micromlgen.linear_regression import is_linear_regression, port_linear_regression
 from micromlgen.xgboost import is_xgboost, port_xgboost
+
 
 def port(
         clf,
@@ -20,6 +23,7 @@ def port(
         **kwargs):
     """Port a classifier to plain C++"""
     assert platform in platforms.ALL, 'Unknown platform %s. Use one of %s' % (platform, ', '.join(platforms.ALL))
+
     if is_svm(clf):
         return port_svm(**locals())
     elif is_rvm(clf):
@@ -42,4 +46,8 @@ def port(
         return port_linear_regression(**locals(), **kwargs)
     elif is_xgboost(clf):
         return port_xgboost(**locals(), **kwargs)
+    elif is_decisiontree_regressor(clf):
+        return port_decisiontree_regressor(**locals(), **kwargs)
+    elif is_randomforest_regressor(clf):
+        return port_randomforest_regressor(**locals(), **kwargs)
     raise TypeError('clf MUST be one of %s' % ', '.join(platforms.ALLOWED_CLASSIFIERS))
