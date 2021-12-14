@@ -88,3 +88,41 @@ clf = SEFR()
 clf.fit(X, y)
 print(port(clf))
 ```
+
+## DecisionTreeRegressor and RandomForestRegressor
+
+```bash
+pip install micromlgen>=1.1.26
+```
+
+```python
+from sklearn.datasets import load_boston
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from micromlgen import port
+
+
+if __name__ == '__main__':
+    X, y = load_boston(return_X_y=True)
+    regr = DecisionTreeRegressor(max_depth=10, min_samples_leaf=5).fit(X, y)
+    regr = RandomForestRegressor(n_estimators=10, max_depth=10, min_samples_leaf=5).fit(X, y)
+    
+    with open('RandomForestRegressor.h', 'w') as file:
+        file.write(port(regr))
+```
+
+```cpp
+// Arduino sketch
+#include "RandomForestRegressor.h"
+
+Eloquent::ML::Port::RandomForestRegressor regressor;
+float X[] = {...};
+
+
+void setup() {
+}
+
+void loop() {
+    float y_pred = regressor.predict(X);
+}
+```

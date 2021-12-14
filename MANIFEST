@@ -2,7 +2,8 @@
 setup.cfg
 setup.py
 micromlgen/__init__.py
-micromlgen/decisiontree.py
+micromlgen/decisiontreeclassifier.py
+micromlgen/decisiontreeregressor.py
 micromlgen/gaussiannb.py
 micromlgen/linear_regression.py
 micromlgen/logisticregression.py
@@ -10,7 +11,8 @@ micromlgen/micromlgen.py
 micromlgen/pca.py
 micromlgen/platforms.py
 micromlgen/principalfft.py
-micromlgen/randomforest.py
+micromlgen/randomforestclassifier.py
+micromlgen/randomforestregressor.py
 micromlgen/rvm.py
 micromlgen/sefr.py
 micromlgen/svm.py
@@ -27,7 +29,9 @@ micromlgen/templates/vote.jinja
 micromlgen/templates/__pycache__/__init__.cpython-37.pyc
 micromlgen/templates/decisiontree/__init__.py
 micromlgen/templates/decisiontree/decisiontree.jinja
+micromlgen/templates/decisiontree/decisiontree_regressor.jinja
 micromlgen/templates/decisiontree/tree.jinja
+micromlgen/templates/decisiontree/tree_regressor.jinja
 micromlgen/templates/gaussiannb/__init__.py
 micromlgen/templates/gaussiannb/gaussiannb.jinja
 micromlgen/templates/gaussiannb/vote.jinja
@@ -45,7 +49,9 @@ micromlgen/templates/principalfft/lut_bool.jinja
 micromlgen/templates/principalfft/principalfft.jinja
 micromlgen/templates/randomforest/__init__.py
 micromlgen/templates/randomforest/randomforest.jinja
+micromlgen/templates/randomforest/randomforest_regressor.jinja
 micromlgen/templates/randomforest/tree.jinja
+micromlgen/templates/randomforest/tree_regressor.jinja
 micromlgen/templates/rvm/__init__.py
 micromlgen/templates/rvm/rvm.jinja
 micromlgen/templates/sefr/__init__.py
