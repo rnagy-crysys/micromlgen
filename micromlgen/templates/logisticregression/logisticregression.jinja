@@ -1,7 +1,7 @@
 {% extends '_skeleton.jinja' %}
 
 {% block predict %}
-    float votes[{{ classes|length }}] = { 0.0f };
+    float votes[{{ classes|length }}] = { {% for i, x in f.enumerate(intercept) %}{% if i > 0 %},{% endif %}{{ f.round(x) }} {% endfor %} };
 
     {% include 'logisticregression/vote.%s.jinja' % platform %}
     {% include 'vote.jinja' %}
