@@ -4,13 +4,13 @@ from distutils.core import setup
 setup(
   name = 'micromlgen',
   packages = ['micromlgen'],
-  version = '1.1.27',
+  version = '1.1.28',
   license='MIT',
   description = 'Generate C code for microcontrollers from Python\'s sklearn classifiers',
   author = 'Simone Salerno',
   author_email = 'eloquentarduino@gmail.com',
   url = 'https://github.com/eloquentarduino/micromlgen',
-  download_url = 'https://github.com/eloquentarduino/micromlgen/blob/master/dist/micromlgen-1.1.27.tar.gz?raw=true',
+  download_url = 'https://github.com/eloquentarduino/micromlgen/blob/master/dist/micromlgen-1.1.28.tar.gz?raw=true',
   keywords = [
     'ML',
     'microcontrollers',
