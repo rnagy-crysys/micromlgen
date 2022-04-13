@@ -22,20 +22,35 @@ def format_tree(tree):
 
 
 def is_xgboost(clf):
-    """Test if classifier can be ported"""
+    """
+    Test if classifier can be ported
+    """
     return check_type(clf, 'XGBClassifier')
 
 
-def port_xgboost(clf, **kwargs):
-    """Port a XGBoost classifier"""
-    with NamedTemporaryFile('w+', suffix='.json', encoding='utf-8') as tmp:
-        clf.save_model(tmp.name)
-        tmp.seek(0)
-        decoded = json.load(tmp)
-        trees = [format_tree(tree) for tree in decoded['learner']['gradient_booster']['model']['trees']]
-        return jinja('xgboost/xgboost.jinja', {
-            'n_classes': int(decoded['learner']['learner_model_param']['num_class']),
-            'trees': trees,
-        }, {
-            'classname': 'XGBClassifier'
-        }, **kwargs)
+def port_xgboost(clf, tmp_file=None, **kwargs):
+    """
+    Port a XGBoost classifier
+    @updated 1.1.28
+    :param clf:
+    :param tmp_file: if not None, use the given file as temporary export destination
+    """
+    if tmp_file is None:
+        with NamedTemporaryFile('w+', suffix='.json', encoding='utf-8') as tmp:
+            clf.save_model(tmp.name)
+            tmp.seek(0)
+            decoded = json.load(tmp)
+    else:
+        clf.save_model(tmp_file)
+
+        with open(tmp_file, encoding='utf-8') as file:
+            decoded = json.load(file)
+
+    trees = [format_tree(tree) for tree in decoded['learner']['gradient_booster']['model']['trees']]
+
+    return jinja('xgboost/xgboost.jinja', {
+        'n_classes': int(decoded['learner']['learner_model_param']['num_class']),
+        'trees': trees,
+    }, {
+        'classname': 'XGBClassifier'
+    }, **kwargs)
