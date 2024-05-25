@@ -4,6 +4,8 @@ MicroML is an attempt to bring Machine Learning algorithms to microcontrollers.
 Please refer to [this blog post](https://eloquentarduino.github.io/2019/11/you-can-run-machine-learning-on-arduino/)
 to an introduction to the topic.
 
+**This repository is archived because it does what it was meant to do: generate C++ code for the supported models. I'm focusing on a more comprehensive library ([https://github.com/eloquentarduino/tinyml4all-python/](https://github.com/eloquentarduino/tinyml4all-python/)), so this will not receive updates**.
+
 ## Install
 
 `pip install micromlgen`
