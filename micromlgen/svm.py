@@ -34,4 +34,4 @@ def port_svm(clf, **kwargs):
         }
     }, {
         'classname': 'OneClassSVM' if check_type(clf, 'OneClassSVM') else 'SVM'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'OneClassSVM' if check_type(clf, 'OneClassSVM') else 'SVM'})

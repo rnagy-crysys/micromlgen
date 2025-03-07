@@ -15,4 +15,4 @@ def port_logisticregression(clf, **kwargs):
         'n_classes': len(clf.classes_)
     }, {
         'classname': 'LogisticRegression'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'LogisticRegression'})

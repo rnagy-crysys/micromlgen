@@ -12,6 +12,8 @@ from micromlgen.pca import is_pca, port_pca
 from micromlgen.principalfft import is_principalfft, port_principalfft
 from micromlgen.linear_regression import is_linear_regression, port_linear_regression
 from micromlgen.xgboost import is_xgboost, port_xgboost
+from micromlgen.adaboostclassifier import is_adaboost, port_adaboost
+from micromlgen.utils import jinja
 
 
 def port(
@@ -50,4 +52,6 @@ def port(
         return port_decisiontree_regressor(**locals(), **kwargs)
     elif is_randomforest_regressor(clf):
         return port_randomforest_regressor(**locals(), **kwargs)
+    elif is_adaboost(clf):
+        return port_adaboost(**locals(), **kwargs)
     raise TypeError('clf MUST be one of %s' % ', '.join(platforms.ALLOWED_CLASSIFIERS))

@@ -14,4 +14,4 @@ def port_sefr(clf, classname=None, **kwargs):
         'dimension': len(clf.weights),
     }, {
         'classname': 'SEFR'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'SEFR'})

@@ -24,4 +24,4 @@ def port_randomforest_regressor(clf, **kwargs):
         } for clf in clf.estimators_]
     }, {
         'classname': 'RandomForestRegressor'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'RandomForestRegressor'})

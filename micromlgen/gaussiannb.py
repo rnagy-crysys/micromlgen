@@ -16,4 +16,4 @@ def port_gaussiannb(clf, **kwargs):
         'n_classes': len(clf.classes_)
     }, {
         'classname': 'GaussianNB'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'GaussianNB'})

@@ -17,4 +17,4 @@ def port_decisiontree(clf, **kwargs):
         'i': 0
     }, {
         'classname': 'DecisionTree'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'DecisionTree'})

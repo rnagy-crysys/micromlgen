@@ -19,5 +19,6 @@ ALLOWED_CLASSIFIERS = [
     'PCA',
     'PrincipalFFT',
     'LinearRegression',
-    'XGBClassifier'
+    'XGBClassifier',
+    'AdaBoostClassifier'
 ]

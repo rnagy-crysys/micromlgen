@@ -26,4 +26,4 @@ def port_decisiontree_regressor(clf, **kwargs):
         'i': 0
     }, {
         'classname': 'DecisionTreeRegressor'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'DecisionTreeRegressor'})

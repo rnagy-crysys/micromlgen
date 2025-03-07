@@ -1,0 +1,14 @@
+{% if tree['left'][i] != tree['right'][i] %}
+    if (x[{{ tree['features'][i] }}] <= {{ tree['thresholds'][i] }}) {
+        {% with i = tree['left'][i] %}
+            {% include 'adaboost/tree.jinja' %}
+        {% endwith %}
+    }
+    else {
+        {% with i = tree['right'][i] %}
+            {% include 'adaboost/tree.jinja' %}
+        {% endwith %}
+    }
+{% else %}
+    votes[{{ tree['classes'][i].argmax() }}] += weights[{{ k }}];
+{% endif %}

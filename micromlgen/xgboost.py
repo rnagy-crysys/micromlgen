@@ -53,4 +53,4 @@ def port_xgboost(clf, tmp_file=None, **kwargs):
         'trees': trees,
     }, {
         'classname': 'XGBClassifier'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'XGBClassifier'})

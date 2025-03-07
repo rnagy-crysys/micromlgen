@@ -15,4 +15,4 @@ def port_pca(clf, **kwargs):
         },
     }, {
         'classname': 'PCA'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'PCA'})

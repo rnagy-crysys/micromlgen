@@ -15,4 +15,4 @@ def port_linear_regression(clf, classname=None, **kwargs):
         'dtype': 'float'
     }, {
         'classname': 'LinearRegression'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'LinearRegression'})

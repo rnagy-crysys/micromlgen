@@ -29,4 +29,4 @@ def port_rvm(clf, **kwargs):
         },
     }, {
         'classname': 'RVC'
-    }, **kwargs)
+    }, **kwargs), jinja('_skeleton_h.jinja', {'classname': 'RVC'})
