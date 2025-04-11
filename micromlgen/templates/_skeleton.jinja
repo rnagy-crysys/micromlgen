@@ -3,3 +3,5 @@
 {{ dtype|default("int", true) }} Eloquent::ML::Port::{{ classname }}::predict(float *x) {
     {% block predict %}{% endblock %}
 }
+
+{% block protected %}{% endblock %}
